@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          alert("Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          setLoading(false);
+          alert("Something went wrong. Please try again.");
+          console.error("Email Error:", error.text);
+        }
+      );
+  };
+
   return (
     <section id="contact" className="bg-slate-950 text-white py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       
@@ -29,7 +58,25 @@ const Contact = () => {
              
              <div>
                <h4 className="text-xl font-bold text-white mb-2">Let's Talk</h4>
-               <p className="text-slate-400">I'm open for freelance projects or full-time opportunities.</p>
+               <p className="text-slate-400 mb-4">I'm open for freelance projects or full-time opportunities.</p>
+               
+               {/* 👇 Social Media Links Added Here 👇 */}
+               <div className="flex gap-4">
+                  {/* GitHub */}
+                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a>
+
+                  {/* Instagram */}
+                  <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a>
+               </div>
              </div>
 
              <div className="space-y-4">
@@ -40,6 +87,7 @@ const Contact = () => {
                  </div>
                  <div>
                    <p className="text-xs text-slate-500 uppercase tracking-wider">Email Me</p>
+                   {/* ⚠️ ඔයාගේ Email එක මෙතන දාන්න */}
                    <a href="mailto:your.email@example.com" className="text-white hover:text-sky-400 transition-colors">your.email@example.com</a>
                  </div>
                </div>
@@ -59,31 +107,30 @@ const Contact = () => {
           </div>
 
           {/* Right: Contact Form */}
-          <form className="bg-slate-900/50 backdrop-blur-xl border border-blue-800/30 p-8 rounded-2xl shadow-xl space-y-6 animate-fade-in-up animation-delay-500">
+          <form ref={form} onSubmit={sendEmail} className="bg-slate-900/50 backdrop-blur-xl border border-blue-800/30 p-8 rounded-2xl shadow-xl space-y-6 animate-fade-in-up animation-delay-500">
             
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
+            <div className="space-y-2">
                 <label className="text-sm text-slate-400">Name</label>
-                <input type="text" placeholder="John Doe" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
-              </div>
-              <div className="space-y-2">
+                <input type="text" name="from_name" required placeholder="Your Name" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
+            </div>
+
+            <div className="space-y-2">
                 <label className="text-sm text-slate-400">Email</label>
-                <input type="email" placeholder="john@example.com" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
-              </div>
+                <input type="email" name="from_email" required placeholder="Your Email" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm text-slate-400">Subject</label>
-              <input type="text" placeholder="Project Inquiry" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
+                <label className="text-sm text-slate-400">Subject</label>
+                <input type="text" name="subject" placeholder="Project Inquiry" className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600" />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm text-slate-400">Message</label>
-              <textarea rows="4" placeholder="Your message here..." className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600"></textarea>
+                <label className="text-sm text-slate-400">Message</label>
+                <textarea name="message" rows="4" required placeholder="Your message here..." className="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder:text-slate-600"></textarea>
             </div>
 
-            <button className="w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-sky-500/30 hover:scale-[1.02] transition-all duration-300">
-              Send Message
+            <button type="submit" disabled={loading} className={`w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-sky-500/30 hover:scale-[1.02] transition-all duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
+               {loading ? 'Sending...' : 'Send Message'}
             </button>
 
           </form>
