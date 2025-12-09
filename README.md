@@ -1,16 +1,52 @@
-# React + Vite
+# ⚡ Personal Portfolio - Rashmini Kavindya
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This project showcases my skills, projects, and journey as an IT Undergraduate at SLIIT. It features a modern, responsive design with interactive elements.
 
-Currently, two official plugins are available:
+🚀 **Live Demo:** https://rashmini-kavindya.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## React Compiler
+* **Frontend:** React.js + Vite
+* **Styling:** Tailwind CSS
+* **Icons:** React Icons
+* **Notifications:** React Hot Toast
+* **Contact Form:** EmailJS
+* **Design Tool:** Figma
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+* **Responsive Design:** Looks great on mobile, tablet, and desktop.
+* **Modern UI:** Glassmorphism effects, smooth animations, and abstract backgrounds.
+* **Project Showcase:** Links to GitHub repositories and Figma live demos.
+* **Contact Form:** Fully functional contact form integrated with EmailJS.
+* **Downloadable CV:** Direct link to download my resume.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 💻 How to Run Locally
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/IT23600898/Rashmini-Kavindya.git
+    cd your-repo-name
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up Environment Variables:**
+    Create a `.env` file in the root directory and add your EmailJS credentials:
+    ```env
+    VITE_SERVICE_ID=your_service_id
+    VITE_TEMPLATE_ID=your_template_id
+    VITE_PUBLIC_KEY=your_public_key
+    ```
+
+4.  **Run the project:**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+Developed with 💙 by **Rashmini Kavindya**
