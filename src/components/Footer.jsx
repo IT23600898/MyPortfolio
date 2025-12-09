@@ -6,9 +6,6 @@ const Footer = () => {
       <p>
         &copy; {new Date().getFullYear()} <span className="text-sky-400">Rashmini Kavindya</span>. All rights reserved.
       </p>
-      <p className="mt-2 flex justify-center items-center gap-1">
-        Built with <span className="text-red-500">♥</span> using React & Tailwind CSS
-      </p>
     </footer>
   )
 }

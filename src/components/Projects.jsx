@@ -1,38 +1,76 @@
-import React from "react";
+import React from "react"; 
 
 const Projects = () => {
   // Project Data
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A modern online shopping experience featuring user authentication, product filtering, cart management, and payment gateway integration.",
-      tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      link: "#",
-      github: "#"
+      title: "Central Pet Care (Backend) – Smart Pet Health & Services Platform",
+      description: "The backend of “Central Pet Care” is built with Node.js, Express, and MongoDB, managing users, pets, appointments, and services via secure RESTful APIs. Authentication and role-based access ensure data protection. Deployed on Render, it provides a reliable, scalable environment powering the frontend seamlessly.",
+      tech: ["React", "Node.js", "Express.js", "MongoDB"],
+      image: "/images/port01.avif", 
+      link: "https://central-pet-care-frontend.vercel.app/",
+      github: "https://github.com/Central-Pet-Care/Central-Pet-Care-Backend.git"
     },
     {
       id: 2,
-      title: "Weather Dashboard",
-      description: "Real-time weather application providing detailed forecasts, location-based weather data, and interactive maps using external APIs.",
-      tech: ["React", "OpenWeather API", "Chart.js"],
-      link: "#",
-      github: "#"
+      title:  "Central Pet Care (Frontend) – Smart Pet Health & Services Platform",
+      description: "The frontend of “Central Pet Care” is developed using React and Tailwind CSS, providing a responsive and intuitive interface for users to manage pets, appointments, and services. Integrated seamlessly with the backend APIs, it ensures smooth interactions and real-time updates. The application is deployed on Vercel, delivering fast and reliable access across all devices",
+      tech: ["React", "Tailwind", "Chart.js", "jsPdf.js"],
+      image: "/images/port01.avif",
+      link: "https://central-pet-care-frontend.vercel.app/",
+      github: "https://github.com/Central-Pet-Care/Central-Pet-Care-Frontend.git"
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "A productivity tool designed for efficiency, featuring drag-and-drop task organization, dark mode, and local storage data persistence.",
-      tech: ["React", "Redux", "Framer Motion"],
-      link: "#",
-      github: "#"
+      title: "Java-Based Web Hospital Management Solution",
+      description: "A comprehensive web-based Hospital Management System developed using Java (JSP/Servlet) and MySQL. This application streamlines hospital operations by digitalizing patient registration, doctor appointments, inventory management, and administrative reporting.",
+      tech: ["Java", "Apache Tomcat 9", "JDBC"],
+      image: "/images/port02.png",
+      github: "https://github.com/IT23600898/Hospital-Management-System.git"
+    },
+    {
+      id: 4,
+      title: "Identity Issuing Service System",
+      description: "Designed and developed a comprehensive web-based platform to streamline the application process for government-issued identities, such as National Identity Cards (NIC) and Driving Licenses. The system bridges the gap between applicants and administrative officials by digitizing manual workflows.",
+      tech: ["PHP"," MySQL", "JavaScript", "HTML5"," CSS3"],
+      image: "/images/port03.png",
+      github: "https://github.com/IT23600898/Identity-Issuing-Service-System.git"
+    },
+    {
+      id: 5,
+      title: "LeafDrop (also stylized as LeafDrop Care)",
+      description: "LeafDrop is a mobile application designed to make plant care simple, enjoyable, and stress-free through a clean, nature-inspired interface. The application serves as a comprehensive tool for both beginners and seasoned plant lovers to grow and sustain thriving indoor gardens.",
+      tech: ["Figma"],
+      image: "/images/port04.webp",
+      link: "https://www.figma.com/proto/SXyK7k6A2Iap4x7pVZLT1s/MAD-Lab-Test-01?page-id=0%3A1&node-id=30-101&p=f&viewport=429%2C382%2C0.11&t=13SN9NCLMQNMNlYY-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=30%3A101",
+      github: "https://github.com/IT23600898/Identity-Issuing-Service-System.git"
+    },
+    {
+      id: 6,
+      title: "LeafDrop",
+      description: "LeafDrop is a mobile application designed to simplify indoor plant care with a nature-inspired interface. It features a personalized dashboard for tracking plants, a smart watering reminder system, and a comprehensive plant search library to help users nurture their gardens effortlessly.",
+      tech: ["IDE: Android Studio", "UI/Markup: XML"],
+      image: "/images/port06.png",
+      github: "https://github.com/IT23600898/1stProject.git"
+    },
+    {
+      id: 7,
+      title: "HealthyMe",
+      description: "Developed 'HealthyMe,' a native Android application designed to assist users in maintaining a healthy and organized lifestyle. The app features a habit tracker with visual progress indicators, a daily mood tracker with analytical charts, and a reminder system powered by WorkManager. All user data is persisted locally using SharedPreferences to ensure offline availability.",
+      tech: ["IDE: Android Studio", "UI/Markup: XML", "Kotlin", "SharedPreferences"],
+      image: "/images/port05.png",
+      github: "https://github.com/IT23600898/HealthyMe.git"
     }
+
+
+
   ];
 
   return (
     <section id="projects" className="bg-slate-950 text-white py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       
-      {/* Background Abstract Glows (About එකේ විදියටම) */}
+      {/* Background Abstract Glows */}
       <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-blue-700/10 rounded-full blur-[100px] -z-10 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-sky-600/10 rounded-full blur-[100px] -z-10 animate-pulse delay-1000"></div>
 
@@ -56,13 +94,19 @@ const Projects = () => {
               className="group flex flex-col bg-slate-900/50 backdrop-blur-xl border border-blue-800/30 rounded-2xl p-6 shadow-lg hover:shadow-sky-500/20 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-2 overflow-hidden"
             >
               
-              {/* Image Placeholder with Gradient (Since no images yet) */}
-              <div className="h-48 mb-6 rounded-xl bg-gradient-to-br from-blue-900/30 to-slate-900 border border-blue-800/20 flex items-center justify-center relative overflow-hidden group-hover:border-sky-500/30 transition-colors">
-                 <div className="absolute inset-0 bg-sky-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 <h4 className="text-4xl font-bold text-slate-700 group-hover:text-sky-500/40 transition-colors duration-300">
-                    {project.title.charAt(0)}
-                 </h4>
+              
+              <div className="h-48 mb-6 rounded-xl border border-blue-800/20 relative overflow-hidden group-hover:border-sky-500/30 transition-colors">
+                 <img 
+                   src={project.image} 
+                   alt={project.title}
+                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                 />
+                 
+                 
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+             
+
 
               {/* Content */}
               <div className="flex-1 flex flex-col">
@@ -74,7 +118,7 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Tech Tags (Same style as About Skills) */}
+                {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                   {project.tech.map((tech, index) => (
                     <span 
@@ -88,11 +132,11 @@ const Projects = () => {
 
                 {/* Buttons / Links */}
                 <div className="flex items-center gap-4 pt-4 border-t border-slate-800/50">
-                   <a href={project.github} className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                       GitHub
                    </a>
-                   <a href={project.link} className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors ml-auto group-hover:translate-x-1 duration-300">
+                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors ml-auto group-hover:translate-x-1 duration-300">
                       Live Demo <span>→</span>
                    </a>
                 </div>

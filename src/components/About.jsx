@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section id="about" className="bg-slate-950 text-white py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       
-      {/* Background Abstract Glows (Hero එකට සමානව) */}
+      {/* Background Abstract Glows */}
       <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-700/10 rounded-full blur-[100px] -z-10 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-sky-600/10 rounded-full blur-[100px] -z-10 animate-pulse delay-1000"></div>
 
@@ -13,7 +13,7 @@ const About = () => {
         {/* Left Side: Text Content */}
         <div className="space-y-6 animate-fade-in-up">
           <h2 className="text-sm md:text-base text-sky-400 font-semibold tracking-[0.2em] uppercase">
-             Who I Am
+              Who I Am
           </h2>
           
           <h3 className="text-3xl md:text-5xl font-bold">
@@ -21,26 +21,26 @@ const About = () => {
           </h3>
 
           <p className="text-slate-400 text-lg leading-relaxed">
-            I am a passionate developer with a keen eye for modern UI/UX design. My journey in web development is driven by the desire to create <span className="text-sky-300 font-medium">seamless digital experiences</span> that solve real-world problems.
+            I am pursuing a <span className="text-sky-300 font-medium">BSc (Hons) in Information & Communication Technology</span>, specializing in Information Technology at <span className="text-sky-300 font-medium">SLIIT</span>, where I navigate the exciting intersection of technical engineering and creative design.
           </p>
 
           <p className="text-slate-400 text-lg leading-relaxed">
-            Whether it's crafting a responsive front-end or engineering a robust back-end, I love working with the latest technologies to bring ideas to life. I am currently open to new opportunities and collaborations.
+            My core passions are Full Stack Development and UI/UX Design, where I thrive on transforming complex backend systems into seamless, visually engaging user experiences. By combining solid technical skills with a design-focused mindset, I aim to build scalable, user-centric digital solutions that not only function flawlessly but also delight users at every interaction.
           </p>
 
           {/* Stats / Highlights */}
           <div className="flex gap-8 pt-4">
             <div>
-              <h4 className="text-3xl font-bold text-white">2+</h4>
-              <p className="text-slate-500 text-sm">Years Exp.</p>
+              <h4 className="text-3xl font-bold text-white">3rd</h4>
+              <p className="text-slate-500 text-sm">Year Undergrad</p>
             </div>
             <div>
               <h4 className="text-3xl font-bold text-white">10+</h4>
-              <p className="text-slate-500 text-sm">Projects</p>
+              <p className="text-slate-500 text-sm">Academic Projects</p>
             </div>
             <div>
-              <h4 className="text-3xl font-bold text-white">24/7</h4>
-              <p className="text-slate-500 text-sm">Support</p>
+              <h4 className="text-3xl font-bold text-white">100%</h4>
+              <p className="text-slate-500 text-sm">Dedication</p>
             </div>
           </div>
         </div>
@@ -55,9 +55,9 @@ const About = () => {
 
           <div className="grid grid-cols-2 gap-4">
             {[
-              "React.js", "Tailwind CSS", "JavaScript", 
-              "Node.js", "Git/GitHub", "Framer Motion",
-              "UI/UX Design", "Responsive Web"
+              "MERN Stack", "Spring Boot", "React.js", 
+              "Java", "Figma (UI/UX)", "Tailwind CSS",
+              "Node.js", "Git/GitHub"
             ].map((skill, index) => (
               <div 
                 key={index} 
@@ -69,12 +69,15 @@ const About = () => {
             ))}
           </div>
 
-          {/* Bottom decorative line */}
           <div className="mt-8 pt-6 border-t border-slate-800 text-center">
-             <button className="text-sky-400 hover:text-white transition-colors text-sm font-semibold tracking-wide flex items-center justify-center gap-2 mx-auto group">
+             <a 
+               href="/Nirmani_CV.pdf" 
+               download="Nirmani_CV.pdf" 
+               className="text-sky-400 hover:text-white transition-colors text-sm font-semibold tracking-wide flex items-center justify-center gap-2 mx-auto group cursor-pointer"
+             >
                Download CV 
                <span className="group-hover:translate-x-1 transition-transform">→</span>
-             </button>
+             </a>
           </div>
 
         </div>

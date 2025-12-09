@@ -16,9 +16,13 @@ const Navbar = () => {
         <a href="#projects" className="hover:text-blue-300 hover:shadow-[0_2px_0_0_#60a5fa] pb-1 transition-all duration-300">Projects</a>
         <a href="#contact" className="hover:text-blue-300 hover:shadow-[0_2px_0_0_#60a5fa] pb-1 transition-all duration-300">Contact</a>
         
-        <button className='bg-gradient-to-r from-blue-700 to-sky-500 text-white px-6 py-2 rounded-full transform transition-all duration-300 shadow-lg shadow-blue-700/50 hover:shadow-sky-500/60'>
+        
+        <a 
+          href="#contact" 
+          className='bg-gradient-to-r from-blue-700 to-sky-500 text-white px-6 py-2 rounded-full transform transition-all duration-300 shadow-lg shadow-blue-700/50 hover:shadow-sky-500/60 inline-block cursor-pointer'
+        >
           Connect Me
-        </button>
+        </a>
       </div>
     </nav>
   )

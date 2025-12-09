@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { Toaster, toast } from 'react-hot-toast'; // 👇 1. Import Toast
 
 const Contact = () => {
   const form = useRef();
@@ -8,6 +9,9 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
+
+    // Toast එක Loading වෙන බව පෙන්වීම
+    const loadingToast = toast.loading('Sending message...');
 
     emailjs
       .sendForm(
@@ -19,12 +23,31 @@ const Contact = () => {
       .then(
         (result) => {
           setLoading(false);
-          alert("Message sent successfully!");
+          toast.dismiss(loadingToast); // Loading එක අයින් කිරීම
+          
+          // 👇 2. Success Toast
+          toast.success("Message sent successfully!", {
+            style: {
+              borderRadius: '10px',
+              background: '#1e293b', // Dark Blue background
+              color: '#fff',
+            },
+          });
+          
           form.current.reset();
         },
         (error) => {
           setLoading(false);
-          alert("Something went wrong. Please try again.");
+          toast.dismiss(loadingToast);
+          
+          // 👇 3. Error Toast
+          toast.error("Failed to send. Please try again.", {
+            style: {
+              borderRadius: '10px',
+              background: '#1e293b',
+              color: '#ef4444', // Red text
+            },
+          });
           console.error("Email Error:", error.text);
         }
       );
@@ -33,6 +56,9 @@ const Contact = () => {
   return (
     <section id="contact" className="bg-slate-950 text-white py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       
+      {/* 👇 4. Toast Container එක මෙතනට දැම්මා */}
+      <Toaster position="top-center" reverseOrder={false} />
+
       {/* Background Abstract Glows */}
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-700/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 -z-10 animate-pulse"></div>
 
@@ -60,20 +86,19 @@ const Contact = () => {
                <h4 className="text-xl font-bold text-white mb-2">Let's Talk</h4>
                <p className="text-slate-400 mb-4">I'm open for freelance projects or full-time opportunities.</p>
                
-               {/* 👇 Social Media Links Added Here 👇 */}
                <div className="flex gap-4">
                   {/* GitHub */}
-                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
+                  <a href="https://github.com/IT23600898" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                   </a>
 
                   {/* LinkedIn */}
-                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
+                  <a href="https://linkedin.com/in/rashmini_kavindya" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 transition-all duration-300 transform hover:-translate-y-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                   </a>
 
                   {/* Instagram */}
-                  <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 transform hover:-translate-y-1">
+                  <a href="https://instagram.com/_raxm1n1._" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-pink-600 transition-all duration-300 transform hover:-translate-y-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                   </a>
                </div>
@@ -87,8 +112,7 @@ const Contact = () => {
                  </div>
                  <div>
                    <p className="text-xs text-slate-500 uppercase tracking-wider">Email Me</p>
-                   {/* ⚠️ ඔයාගේ Email එක මෙතන දාන්න */}
-                   <a href="mailto:your.email@example.com" className="text-white hover:text-sky-400 transition-colors">your.email@example.com</a>
+                   <a href="mailto:your.email@example.com" className="text-white hover:text-sky-400 transition-colors">rashminik727@gmail.com</a>
                  </div>
                </div>
 
@@ -99,7 +123,7 @@ const Contact = () => {
                  </div>
                  <div>
                    <p className="text-xs text-slate-500 uppercase tracking-wider">Location</p>
-                   <p className="text-white">Colombo, Sri Lanka</p>
+                   <p className="text-white">52/1 A, 1st Lane, Manthrimulla Road, Attidiya, Dehiwala.</p>
                  </div>
                </div>
              </div>
