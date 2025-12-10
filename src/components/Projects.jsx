@@ -1,4 +1,5 @@
-import React from "react"; 
+import React from "react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   // Project Data
@@ -62,52 +63,89 @@ const Projects = () => {
       image: "/images/port05.png",
       github: "https://github.com/IT23600898/HealthyMe.git"
     }
-
-
-
   ];
+
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 } // Cards එකින් එක එන පරතරය
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
   return (
     <section id="projects" className="bg-slate-950 text-white py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       
-      {/* Background Abstract Glows */}
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-blue-700/10 rounded-full blur-[100px] -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-sky-600/10 rounded-full blur-[100px] -z-10 animate-pulse delay-1000"></div>
+      {/* --- Background Abstract Glows --- */}
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-blue-700/10 rounded-full blur-[100px] -z-10"
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 12, repeat: Infinity, delay: 2 }}
+        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-sky-600/10 rounded-full blur-[100px] -z-10"
+      />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         
-        {/* Section Heading */}
-        <div className="mb-16 animate-fade-in-up">
+        {/* --- Section Heading --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
           <h2 className="text-sm md:text-base text-sky-400 font-semibold tracking-[0.2em] uppercase mb-2">
             My Portfolio
           </h2>
           <h3 className="text-3xl md:text-5xl font-bold">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-600">Projects</span>
           </h3>
-        </div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* --- Projects Grid --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {projects.map((project) => (
-            <div 
+            <motion.div 
               key={project.id} 
-              className="group flex flex-col bg-slate-900/50 backdrop-blur-xl border border-blue-800/30 rounded-2xl p-6 shadow-lg hover:shadow-sky-500/20 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+              variants={cardVariants}
+              whileHover={{ y: -10 }} // Card Hover Effect
+              className="group flex flex-col bg-slate-900/50 backdrop-blur-xl border border-blue-800/30 rounded-2xl p-6 shadow-lg hover:shadow-sky-500/20 hover:border-sky-500/30 transition-all duration-300 overflow-hidden"
             >
               
-              
+              {/* Image Container */}
               <div className="h-48 mb-6 rounded-xl border border-blue-800/20 relative overflow-hidden group-hover:border-sky-500/30 transition-colors">
-                 <img 
+                 <motion.img 
+                   whileHover={{ scale: 1.1 }} // Image Zoom Effect
+                   transition={{ duration: 0.5 }}
                    src={project.image} 
                    alt={project.title}
-                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                   className="w-full h-full object-cover"
                  />
                  
-                 
+                 {/* Gradient Overlay */}
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-             
-
-
+              
               {/* Content */}
               <div className="flex-1 flex flex-col">
                 <h4 className="text-xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
@@ -132,19 +170,26 @@ const Projects = () => {
 
                 {/* Buttons / Links */}
                 <div className="flex items-center gap-4 pt-4 border-t border-slate-800/50">
-                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                      GitHub
-                   </a>
-                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors ml-auto group-hover:translate-x-1 duration-300">
-                      Live Demo <span>→</span>
-                   </a>
+                   {/* Conditional Rendering: Only show GitHub button if link exists */}
+                   {project.github && (
+                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                     </a>
+                   )}
+
+                   {/* Conditional Rendering: Only show Live Demo button if link exists */}
+                   {project.link && (
+                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors ml-auto group-hover:translate-x-1 duration-300">
+                        Live Demo <span>→</span>
+                     </a>
+                   )}
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
